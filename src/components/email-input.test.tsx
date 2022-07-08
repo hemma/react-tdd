@@ -23,8 +23,8 @@ describe('Email Input', () => {
         render(<EmailInput setEmail={setEmail}/>);
 
         const emailInput = screen.getByTestId("email")
-        fireEvent.change(emailInput, {target: { value: "aa" }})
-        fireEvent.change(emailInput, {target: { value: "" }})
+        fireEvent.change(emailInput, {target: {value: "aa"}})
+        fireEvent.change(emailInput, {target: {value: ""}})
 
         expect(screen.getByText("Email cannot be empty.")).toBeInTheDocument();
         expect(email).toBeUndefined()
@@ -34,7 +34,7 @@ describe('Email Input', () => {
         render(<EmailInput setEmail={setEmail}/>);
 
         const emailInput = screen.getByTestId("email")
-        fireEvent.change(emailInput, {target: { value: "test.se" }})
+        fireEvent.change(emailInput, {target: {value: "test.se"}})
 
         expect(screen.getByText("Email need to include @.")).toBeInTheDocument();
         expect(email).toBeUndefined()
@@ -44,11 +44,11 @@ describe('Email Input', () => {
         render(<EmailInput setEmail={setEmail}/>);
 
         const emailInput = screen.getByTestId("email")
-        fireEvent.change(emailInput, {target: { value: "aa" }})
-        fireEvent.change(emailInput, {target: { value: "" }})
+        fireEvent.change(emailInput, {target: {value: "aa"}})
+        fireEvent.change(emailInput, {target: {value: ""}})
         expect(screen.getByText("Email cannot be empty.")).toBeInTheDocument();
 
-        fireEvent.change(emailInput, {target: { value: "aa" }})
+        fireEvent.change(emailInput, {target: {value: "aa"}})
         expect(screen.queryByText("Email cannot be empty.")).not.toBeInTheDocument()
         expect(email).toBeUndefined()
     })
@@ -57,7 +57,7 @@ describe('Email Input', () => {
         render(<EmailInput setEmail={setEmail}/>);
 
         const emailInput = screen.getByTestId("email")
-        fireEvent.change(emailInput, {target: { value: "test@mail.se" }})
+        fireEvent.change(emailInput, {target: {value: "test@mail.se"}})
         expect(email).toEqual("test@mail.se")
     })
 })

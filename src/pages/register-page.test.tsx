@@ -8,4 +8,10 @@ describe('Register component', () => {
 
         expect(screen.getByText('Register')).toBeInTheDocument();
     });
+
+    test('should render', () => {
+        render(<Register />);
+
+        expect(screen.getByText('Register')).toBeInTheDocument();
+    });
 })

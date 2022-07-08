@@ -2,6 +2,7 @@ import React from 'react'
 import {Box, Button, CheckBox, DateInput, Form, Grid, TextInput} from 'grommet'
 import {Lock, Mail} from 'grommet-icons'
 import EmailInput from "../components/email-input";
+import PasswordInput from "../components/password-input";
 
 
 function Register() {
@@ -13,13 +14,9 @@ function Register() {
                     <h3>Register</h3>
                 </Box>
                 <Form>
-                    <EmailInput/>
-                    <Box align="center" justify="center" pad="small">
-                        <TextInput type="password" icon={<Lock/>}/>
-                    </Box>
-                    <Box align="center" justify="center" pad="small">
-                        <TextInput type="password" icon={<Lock/>}/>
-                    </Box>
+                    <EmailInput setEmail={() => {}}/>
+
+                    <PasswordInput setPassword={() => {}}/>
                     <Box align="center" justify="center" pad="small">
                         <DateInput format="yyyy/mm/dd" inline={false}/>
                     </Box>
