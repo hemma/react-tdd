@@ -8,6 +8,9 @@ function Register() {
     return (
         <Box fill="vertical" overflow="auto" align="center" flex="grow" direction="column" pad={{"top": "xlarge"}}>
             <Grid pad="small">
+                <Box align="center" justify="center" pad="small">
+                    <h3>Register</h3>
+                </Box>
                 <Form>
                     <Box align="center" justify="center" pad="small">
                         <TextInput placeholder="email@provider.se" plain={false} size="medium" reverse={false}

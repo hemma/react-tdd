@@ -1,5 +1,5 @@
 import './App.css'
-import Register from "./pages/register.page";
+import Register from "./pages/register-page";
 import {Grommet} from "grommet";
 
 const theme = {
