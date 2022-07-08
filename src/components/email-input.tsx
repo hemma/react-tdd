@@ -3,17 +3,30 @@ import {Box, FormField, TextInput} from 'grommet'
 import {Mail} from 'grommet-icons'
 
 const EMPTY_EMAIL_ERROR = "Email cannot be empty."
+const INVALID_EMAIL_ERROR = "Email need to include @."
 
-function EmailInput() {
-    const [error, setError] = useState<String | undefined>(undefined)
+interface EmailInputProps {
+    setEmail(email: string | undefined): void;
+}
+
+function EmailInput(props: EmailInputProps) {
+    const [error, setError] = useState<string | undefined>(undefined)
 
     const onChange = (event: React.FormEvent<HTMLInputElement>) => {
-        if (event.currentTarget.value.trim() === "") {
+        const email = event.currentTarget.value.trim()
+        if (email === "") {
             setError(EMPTY_EMAIL_ERROR)
+            props.setEmail(undefined)
             return
+        }
+        if (!email.includes("@")) {
+            setError(INVALID_EMAIL_ERROR)
+            props.setEmail(undefined)
+            return;
         }
 
         setError(undefined)
+        props.setEmail(email)
     }
 
     return (
