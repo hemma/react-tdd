@@ -1,11 +1,29 @@
-import React from 'react'
-import {Box, Button, CheckBox, DateInput, Form, Grid, TextInput} from 'grommet'
-import {Lock, Mail} from 'grommet-icons'
+import React, {useEffect, useState} from 'react'
+import {Box, Button, Form, Grid} from 'grommet'
+
 import EmailInput from "../components/email-input";
 import PasswordInput from "../components/password-input";
 
 
 function Register() {
+
+    const [isDisabled, setIsDisabled] = useState(false)
+
+    const [email, setEmail] = useState<string | undefined>(undefined)
+    const [password, setPassword] = useState<string | undefined>(undefined)
+
+    useEffect(() => {
+        if (!email) {
+            setIsDisabled(true)
+            return
+        }
+        if (!password) {
+            setIsDisabled(true)
+            return
+        }
+
+        setIsDisabled(false)
+    }, [email, password])
 
     return (
         <Box fill="vertical" overflow="auto" align="center" flex="grow" direction="column" pad={{"top": "xlarge"}}>
@@ -14,17 +32,12 @@ function Register() {
                     <h3>Register</h3>
                 </Box>
                 <Form>
-                    <EmailInput setEmail={() => {}}/>
+                    <EmailInput setEmail={setEmail}/>
 
-                    <PasswordInput setPassword={() => {}}/>
+                    <PasswordInput setPassword={setPassword}/>
+
                     <Box align="center" justify="center" pad="small">
-                        <DateInput format="yyyy/mm/dd" inline={false}/>
-                    </Box>
-                    <Box align="end" justify="center" pad="small">
-                        <CheckBox label="Accept terms & conditions"/>
-                    </Box>
-                    <Box align="center" justify="center" pad="small">
-                        <Button label="Button" primary secondary={false} reverse={false} type="submit"/>
+                        <Button id="submit" data-testid="submit" label="Button" primary disabled={isDisabled} secondary={false} reverse={false} type="submit"/>
                     </Box>
                 </Form>
             </Grid>
