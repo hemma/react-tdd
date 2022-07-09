@@ -28,11 +28,6 @@ function PasswordInput(props: PasswordInputProps) {
     }
 
     useEffect(() => {
-        if (!password && !confirmPassword) {
-            setError(undefined)
-            props.setPassword(undefined)
-            return
-        }
         if (!password) {
             setError(EMPTY_PASSWORD_ERROR)
             props.setPassword(undefined)
